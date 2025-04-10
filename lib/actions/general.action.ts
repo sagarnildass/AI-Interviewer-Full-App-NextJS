@@ -8,6 +8,10 @@ import { generateObject } from "ai";
 export async function getInterviewsByUserId(
   userId: string
 ): Promise<Interview[] | null> {
+  if (!userId) {
+    return null;
+  }
+
   const interviews = await db
     .collection("interviews")
     .where("userId", "==", userId)
@@ -24,6 +28,11 @@ export async function getLatestInterviews(
   params: GetLatestInterviewsParams
 ): Promise<Interview[] | null> {
   const { userId, limit = 20 } = params;
+  
+  if (!userId) {
+    return null;
+  }
+
   const interviews = await db
     .collection("interviews")
     .orderBy("createdAt", "desc")
@@ -36,7 +45,7 @@ export async function getLatestInterviews(
     id: doc.id,
     ...doc.data(),
   })) as Interview[];
-}
+} 
 
 export async function getInterviewById(id: string): Promise<Interview | null> {
   const interview = await db.collection("interviews").doc(id).get();
