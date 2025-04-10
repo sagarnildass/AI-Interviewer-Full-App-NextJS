@@ -9,7 +9,10 @@ export function cn(...inputs: ClassValue[]) {
 const techIconBaseURL = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons";
 
 const normalizeTechName = (tech: string) => {
-  const key = tech.toLowerCase().replace(/\.js$/, "").replace(/\s+/g, "");
+  // First convert to lowercase and remove .js
+  const key = tech.toLowerCase()
+    .replace(/\.js$/, "")
+    .replace(/\s+/g, ""); // This line ensures spaces are removed
   return mappings[key as keyof typeof mappings];
 };
 
@@ -25,9 +28,10 @@ const checkIconExists = async (url: string) => {
 export const getTechLogos = async (techArray: string[]) => {
   const logoURLs = techArray.map((tech) => {
     const normalized = normalizeTechName(tech);
+    const suffix = normalized === "amazonwebservices" ? "-plain-wordmark.svg" : "-original.svg";
     return {
       tech,
-      url: `${techIconBaseURL}/${normalized}/${normalized}-original.svg`,
+      url: `${techIconBaseURL}/${normalized}/${normalized}${suffix}`,
     };
   });
 
