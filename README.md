@@ -691,3 +691,6 @@ export const dummyInterviews: Interview[] = [
 
 Public assets used in the project can be found [here](https://drive.google.com/drive/folders/1DuQ9bHH3D3ZAN_CFKfBgsaB8DEhEdnog?usp=sharing)
 
+## Shout-out
+
+- [JavaScript Mastery](https://www.youtube.com/@javascriptmastery/videos)
