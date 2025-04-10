@@ -22,6 +22,7 @@ export const mappings = {
   mongoose: "mongoose",
   mysql: "mysql",
   postgresql: "postgresql",
+  postgres: "postgresql",
   sqlite: "sqlite",
   firebase: "firebase",
   docker: "docker",
